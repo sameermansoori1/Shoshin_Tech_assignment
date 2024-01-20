@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shoshin_tech_assignment/Screens/home_page.dart';
+import 'package:shoshin_tech_assignment/Screens/kukufm_detail_age.dart';
 
 class DetailPage extends StatelessWidget {
   const DetailPage({super.key});
@@ -20,15 +21,17 @@ class DetailPage extends StatelessWidget {
         backgroundColor: Colors.blue,
       ),
       body: Column(
-        children: [Expanded(
+        children: [
+          Expanded(
           child: ClipRRect(
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(25.0),
                 topRight: Radius.circular(25.0)),
-            child: Container(
-              height: MediaQuery.of(context).size.height,
-              color: Colors.white,
-              width: double.infinity,
+            child: Column(
+              children: [
+                KukufmPage(),
+
+              ],
             ),
           ),
         ),],

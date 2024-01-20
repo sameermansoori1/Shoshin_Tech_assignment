@@ -4,7 +4,10 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shoshin_tech_assignment/Screens/Kotak_page.dart';
+import 'package:shoshin_tech_assignment/Screens/RageCoffe_page.dart';
 import 'package:shoshin_tech_assignment/Screens/detail_page.dart';
+import 'package:shoshin_tech_assignment/Screens/kukufm_detail_age.dart';
 import 'package:shoshin_tech_assignment/models/tasks_model.dart';
 import 'package:flutter/services.dart' as rootBundle;
 
@@ -22,7 +25,6 @@ class HomePage extends StatelessWidget {
           title: Text(
             "Hey Shumbham",
             style: TextStyle(color: Colors.white),
-
           ),
           actions: [
             Padding(
@@ -31,7 +33,10 @@ class HomePage extends StatelessWidget {
                 onPressed: () {
                   // Add your onPressed logic here
                 },
-                icon: Icon(Icons.wallet_rounded, color: Colors.blue,),
+                icon: Icon(
+                  Icons.wallet_rounded,
+                  color: Colors.blue,
+                ),
                 label: Text(
                   "₹ 450",
                   style: TextStyle(color: Colors.black54),
@@ -71,7 +76,14 @@ class HomePage extends StatelessWidget {
                                     child: Column(
                                       children: [
                                         IconButton(
-                                            onPressed: () {},
+                                            onPressed: () {
+                                              Get.defaultDialog(
+                                                  title: "Updating Soon!",
+                                                  content: Center(
+                                                    child: Text(
+                                                        "All Offer section Functionality should be added soon."),
+                                                  ),backgroundColor: Colors.blueAccent);
+                                            },
                                             icon: Icon(
                                               Icons.add_alert,
                                               size: 35,
@@ -90,7 +102,10 @@ class HomePage extends StatelessWidget {
                                     child: Column(
                                       children: [
                                         IconButton(
-                                            onPressed: () {},
+                                            onPressed: () {Get.defaultDialog(
+                                                title: "Updating Soon!",
+                                                content: Text(
+                                                    "Gift section Functionality should be added soon."),backgroundColor: Colors.blueAccent);},
                                             icon: Icon(
                                               Icons.wallet_giftcard,
                                               size: 35,
@@ -109,7 +124,10 @@ class HomePage extends StatelessWidget {
                                     child: Column(
                                       children: [
                                         IconButton(
-                                            onPressed: () {},
+                                            onPressed: () {Get.defaultDialog(
+                                                title: "Updating Soon!",
+                                                content: Text(
+                                                    "Upcoming section Functionality should be added soon."),backgroundColor: Colors.blueAccent);},
                                             icon: Icon(
                                               Icons.access_time,
                                               size: 35,
@@ -128,7 +146,10 @@ class HomePage extends StatelessWidget {
                                     child: Column(
                                       children: [
                                         IconButton(
-                                            onPressed: () {},
+                                            onPressed: () {Get.defaultDialog(
+                                                title: "Updating Soon!",
+                                                content: Text(
+                                                    "My Offer section Functionality should be added soon."),backgroundColor: Colors.blueAccent);},
                                             icon: Icon(
                                               Icons.check_circle_outline,
                                               size: 35,
@@ -345,7 +366,21 @@ class HomePage extends StatelessWidget {
                                           index % borderColors.length];
                                       return GestureDetector(
                                         onTap: () {
-                                          Get.to(DetailPage());
+                                          switch (index) {
+                                            case 0:
+                                              Get.to(KukufmPage());
+                                              break;
+                                            case 1:
+                                              Get.to(Kotak());
+                                              break;
+                                            case 2:
+                                              Get.to(RageCoffe());
+                                              break;
+                                          // Add more cases as needed
+                                            default:
+                                            // Handle default case
+                                              break;
+                                          }
                                         },
                                         child: Container(
                                           height: 77,
@@ -399,52 +434,74 @@ class HomePage extends StatelessWidget {
                                                     ),
                                                   ),
                                                   Padding(
-                                                    padding: const EdgeInsets.fromLTRB(0.0, 1.0, 0.0, 0.0),
-                                                    child: Container(width: 80,height: 18,
-                                                      child: ElevatedButton(onPressed: () {},
+                                                    padding: const EdgeInsets
+                                                        .fromLTRB(
+                                                        0.0, 1.0, 0.0, 0.0),
+                                                    child: Container(
+                                                      width: 80,
+                                                      height: 18,
+                                                      child: ElevatedButton(
+                                                          onPressed: () {},
                                                           style: ButtonStyle(
-                                                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                                            shape: MaterialStateProperty
+                                                                .all<
+                                                                    RoundedRectangleBorder>(
                                                               RoundedRectangleBorder(
-                                                                borderRadius: BorderRadius.circular(5.0), // Adjust the radius as needed
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            5.0), // Adjust the radius as needed
                                                               ),
                                                             ),
-                                                            side: MaterialStateProperty.all(BorderSide(color: Colors.blue)),
+                                                            side: MaterialStateProperty
+                                                                .all(BorderSide(
+                                                                    color: Colors
+                                                                        .blue)),
                                                           ),
-
                                                           child: Text(
-                                                        items[index]
-                                                            .payout
-                                                            .toString(), // Add this line to display shortDesc
-                                                        style: TextStyle(
-                                                            color:
-                                                            Colors.black54,
-                                                            fontWeight:
-                                                            FontWeight.bold,
-                                                            fontSize: 12),
-                                                      )),
+                                                            items[index]
+                                                                .payout
+                                                                .toString(), // Add this line to display shortDesc
+                                                            style: TextStyle(
+                                                                color: Colors
+                                                                    .black54,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                fontSize: 12),
+                                                          )),
                                                     ),
                                                   )
                                                 ],
                                               ),
-                                           Padding(
-                                             padding: const EdgeInsets.only(left: 100.0,top: 18),
-                                             child: Row(
-                                               children: [Icon(Icons.trending_up_outlined,color: Colors.deepOrange),
-                                                 Container(child: Text(
-                                                   items[index]
-                                                       .totallead
-                                                       .toString(), // Add this line to display shortDesc
-                                                   style: TextStyle(
-                                                       color:
-                                                       Colors.deepOrange,
-                                                       fontWeight:
-                                                       FontWeight.bold,
-                                                       fontSize: 12),
-                                                 ),),
-                                               ],
-                                             ),
-                                           ) ],
-                                           ),
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    left: 100.0, top: 18),
+                                                child: Row(
+                                                  children: [
+                                                    Icon(
+                                                        Icons
+                                                            .trending_up_outlined,
+                                                        color:
+                                                            Colors.deepOrange),
+                                                    Container(
+                                                      child: Text(
+                                                        items[index]
+                                                            .totallead
+                                                            .toString(), // Add this line to display shortDesc
+                                                        style: TextStyle(
+                                                            color: Colors
+                                                                .deepOrange,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize: 12),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              )
+                                            ],
+                                          ),
                                           // Add other widgets or customize the ListTile as needed
                                         ),
                                       );
