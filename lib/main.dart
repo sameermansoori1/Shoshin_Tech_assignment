@@ -13,11 +13,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Flutter Demo',
+      title: 'Shoshin_Tech_assignment',
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.blue,
         primarySwatch: Colors.orange,
+
       ),
+      debugShowCheckedModeBanner: false,
       home: const HomePage(),
     );
   }

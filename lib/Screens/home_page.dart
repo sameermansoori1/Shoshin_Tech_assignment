@@ -22,7 +22,26 @@ class HomePage extends StatelessWidget {
           title: Text(
             "Hey Shumbham",
             style: TextStyle(color: Colors.white),
+
           ),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ElevatedButton.icon(
+                onPressed: () {
+                  // Add your onPressed logic here
+                },
+                icon: Icon(Icons.wallet_rounded, color: Colors.blue,),
+                label: Text(
+                  "₹ 450",
+                  style: TextStyle(color: Colors.black54),
+                ),
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.white,
+                ),
+              ),
+            ),
+          ],
           backgroundColor: Colors.blue,
         ),
         body: FutureBuilder(
