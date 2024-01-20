@@ -337,8 +337,8 @@ class HomePage extends StatelessWidget {
                                         (BuildContext context, int index) {
                                       List<Color> borderColors = [
                                         Colors.pink,
-                                        Colors.blue,
-                                        Colors.green,
+                                        Colors.indigo,
+                                        Colors.black,
                                         // Add more colors as needed
                                       ];
                                       Color borderColor = borderColors[
