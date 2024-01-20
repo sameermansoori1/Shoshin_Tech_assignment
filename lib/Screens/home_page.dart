@@ -115,7 +115,7 @@ class HomePage extends StatelessWidget {
                                               size: 35,
                                               color: Colors.deepPurpleAccent,
                                             )),
-                                        SizedBox(height: 2),
+                                        SizedBox(height: 3),
                                         Text("My Offers",
                                             style: TextStyle(
                                                 fontSize: 15,
