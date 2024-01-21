@@ -49,6 +49,7 @@ intuitive user interface and a smooth user experience using Getx for State Manag
 - Json Data Handling
 - Carousel_slider for items
 - flutter_rating_bar for displaing rating of each items
+- Using Dialog boxes and Snackbars for better UI response
 
 
 ## 🚀 About Me
