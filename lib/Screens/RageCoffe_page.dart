@@ -538,7 +538,7 @@ class RageCoffe extends StatelessWidget {
                                               Get.defaultDialog(
                                                   title: "Under Development!",
                                                   content: Text(
-                                                      "This Feature is not developed yet message to shoshi.tech email for more details."));
+                                                      "This Feature is not developed yet message to shoshin.tech for more details."));
                                             },
                                             child: Container(
                                               decoration: BoxDecoration(

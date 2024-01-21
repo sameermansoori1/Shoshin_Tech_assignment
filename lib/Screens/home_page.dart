@@ -21,7 +21,7 @@ class HomePage extends StatelessWidget {
           leading: IconButton(
             onPressed: () {
               Get.snackbar("Menu button under development",
-                  "This Feature is not developed yet message to shoshi.tech email for more details.");
+                  "This Feature is not developed yet message to shoshin.tech for more details.");
             },
             icon: Icon(Icons.menu, color: Colors.white),
           ),
@@ -37,7 +37,7 @@ class HomePage extends StatelessWidget {
                   Get.defaultDialog(
                       title: "Wallet is UnderDevelopment!",
                       content: Text(
-                          "This Feature is not developed yet message to shoshi.tech email for more details."));
+                          "This Feature is not developed yet message to shoshin.tech for more details."));
                 },
                 icon: Icon(
                   Icons.wallet_rounded,
@@ -376,7 +376,7 @@ class HomePage extends StatelessWidget {
                                     onTap: () {
                                       Get.snackbar(
                                           "More offer section is in development phase",
-                                          "This Feature is not developed yet message to shoshin.tech email for more details.");
+                                          "This Feature is not developed yet message to shoshin.tech for more details.");
                                     },
                                     child: Icon(
                                       Icons.menu_open_rounded,
