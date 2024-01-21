@@ -70,7 +70,7 @@ class Kotak extends StatelessWidget {
                                       children: [
                                         Container(
                                           height: 100,
-                                          width: 100,
+                                          width: 92,
                                           child: Padding(
                                             padding: const EdgeInsets.only(
                                                 right: 20.0),
@@ -191,7 +191,7 @@ class Kotak extends StatelessWidget {
                                     padding: const EdgeInsets.all(2.0),
                                     child: Container(
                                       height: 50,
-                                      margin: EdgeInsets.all(8.0),
+                                      margin: EdgeInsets.all(7.0),
                                       padding: EdgeInsets.all(8.0),
                                       decoration: BoxDecoration(
                                         color: Colors.white,
@@ -206,22 +206,19 @@ class Kotak extends StatelessWidget {
                                       child: Row(children: [
                                         Padding(
                                           padding: const EdgeInsets.only(
-                                              bottom: 2.0),
+                                              bottom: 0.0),
                                           child: Container(
                                               child: Icon(
                                                 Icons.check_circle_outline,
                                                 color: Colors.green,
-                                                size: 33,
                                               )),
                                         ),
-                                        SizedBox(
-                                          width: 5,
-                                        ),
+
                                         Padding(
                                           padding: const EdgeInsets.all(3.0),
                                           child: Container(
                                             height: 30,
-                                            width: 300,
+                                            width: 260,
                                             child: Text(
                                               detail[0]
                                                   .description
@@ -230,7 +227,7 @@ class Kotak extends StatelessWidget {
                                                   color: Colors.black
                                                       .withOpacity(0.73),
                                                   fontWeight: FontWeight.bold,
-                                                  fontSize: 17),
+                                                  fontSize: 15),
                                             ),
                                           ),
                                         ),
@@ -286,7 +283,7 @@ class Kotak extends StatelessWidget {
                                                   child: Icon(
                                                     Icons.timer,
                                                     color: Colors.orange,
-                                                    size: 33,
+
                                                   )),
                                             ),
                                             SizedBox(
@@ -297,7 +294,7 @@ class Kotak extends StatelessWidget {
                                               const EdgeInsets.all(3.0),
                                               child: Container(
                                                 height: 30,
-                                                width: 300,
+                                                width: 260,
                                                 child: Text(
                                                   detail[0]
                                                       .description
@@ -307,7 +304,7 @@ class Kotak extends StatelessWidget {
                                                           .withOpacity(0.73),
                                                       fontWeight:
                                                       FontWeight.bold,
-                                                      fontSize: 17),
+                                                      fontSize: 15),
                                                 ),
                                               ),
                                             ),
@@ -392,14 +389,14 @@ class Kotak extends StatelessWidget {
                                           padding: const EdgeInsets.all(3.0),
                                           child: Container(
                                             height: 30,
-                                            width: 300,
+                                            width: 240,
                                             child: Text(
                                               "Refer Kotak to friend", // Add this line to display shortDesc
                                               style: TextStyle(
                                                   color: Colors.black
                                                       .withOpacity(0.73),
                                                   fontWeight: FontWeight.bold,
-                                                  fontSize: 17),
+                                                  fontSize: 15),
                                             ),
                                           ),
                                         ),
@@ -462,14 +459,14 @@ class Kotak extends StatelessWidget {
                                           padding: const EdgeInsets.all(3.0),
                                           child: Container(
                                             height: 30,
-                                            width: 300,
+                                            width: 238,
                                             child: Text(
                                               "Open zero balance savings account ", // Add this line to display shortDesc
                                               style: TextStyle(
                                                   color: Colors.black
                                                       .withOpacity(0.73),
                                                   fontWeight: FontWeight.bold,
-                                                  fontSize: 17),
+                                                  fontSize: 13),
                                             ),
                                           ),
                                         ),
@@ -498,93 +495,94 @@ class Kotak extends StatelessWidget {
                                       ]),
                                     ),
                                   ),
-                                  Stack(
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.only(
-                                            top: 70.0, left: 80),
-                                        child: Row(
-                                          children: [
-                                            Icon(Icons.trending_up_outlined,
-                                                color: Colors.deepOrange),
-                                            Row(
+                                  Container(alignment: Alignment.center,
+                                    child: Stack(alignment: Alignment.center,
+                                      children: [
+                                           Padding(
+                                             padding: const EdgeInsets.only(bottom: 20.0),
+                                             child: Row(mainAxisAlignment: MainAxisAlignment.center,
                                               children: [
+                                                Icon(Icons.trending_up_outlined,
+                                                    color: Colors.deepOrange),
+                                                Row(
+                                                  children: [
+                                                    Container(
+                                                      child: Text(
+                                                        items[1]
+                                                            .totallead
+                                                            .toString(), // Add this line to display shortDesc
+                                                        style: TextStyle(
+                                                            color:
+                                                            Colors.deepOrange,
+                                                            fontWeight:
+                                                            FontWeight.bold,
+                                                            fontSize: 12),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
                                                 Container(
                                                   child: Text(
-                                                    items[1]
-                                                        .totallead
-                                                        .toString(), // Add this line to display shortDesc
+                                                    " users has already participated", // Add this line to display shortDesc
                                                     style: TextStyle(
-                                                        color:
-                                                        Colors.deepOrange,
-                                                        fontWeight:
-                                                        FontWeight.bold,
+                                                        color: Colors.deepOrange,
+                                                        fontWeight: FontWeight.bold,
                                                         fontSize: 12),
                                                   ),
                                                 ),
-                                              ],
-                                            ),
-                                            Container(
-                                              child: Text(
-                                                " users has already participated", // Add this line to display shortDesc
-                                                style: TextStyle(
-                                                    color: Colors.deepOrange,
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 12),
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(
-                                            top: 90.0, left: 70),
-                                        child: GestureDetector(
-                                          onTap: () {
-                                            Get.defaultDialog(
-                                                title: "Under Development!",
-                                                content: Text(
-                                                    "This Feature is not developed yet message to shoshi.tech email for more details."));
-                                          },
-                                          child: Container(
-                                            decoration: BoxDecoration(
-                                                color: Colors.blue,
-                                                borderRadius:
-                                                BorderRadius.circular(20)),
-                                            height: 40,
-                                            width: 270,
-                                            child: Center(
-                                              child: Padding(
-                                                padding: const EdgeInsets.only(
-                                                    left: 110.0),
-                                                child: Row(
-                                                  children: [
-                                                    Text(
-                                                      "Get at ₹", // Add this line to display shortDesc
-                                                      style: TextStyle(
-                                                          color: Colors.white,
-                                                          fontWeight:
-                                                          FontWeight.bold,
-                                                          fontSize: 12),
-                                                    ),
-                                                    Text(
-                                                      items[1]
-                                                          .payoutamt
-                                                          .toString(), // Add this line to display shortDesc
-                                                      style: TextStyle(
-                                                          color: Colors.white,
-                                                          fontWeight:
-                                                          FontWeight.bold,
-                                                          fontSize: 12),
-                                                    ),
-                                                  ],
+                                             ],
+                                             ),
+                                           ),
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                              top: 40.0, left: 0.0),
+                                          child: GestureDetector(
+                                            onTap: () {
+                                              Get.defaultDialog(
+                                                  title: "Under Development!",
+                                                  content: Text(
+                                                      "This Feature is not developed yet message to shoshi.tech email for more details."));
+                                            },
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                  color: Colors.blue,
+                                                  borderRadius:
+                                                  BorderRadius.circular(20)),
+                                              height: 40,
+                                              width: 270,
+                                              child: Center(
+                                                child: Padding(
+                                                  padding: const EdgeInsets.only(
+                                                      left: 110.0),
+                                                  child: Row(
+                                                    children: [
+                                                      Text(
+                                                        "Get at ₹", // Add this line to display shortDesc
+                                                        style: TextStyle(
+                                                            color: Colors.white,
+                                                            fontWeight:
+                                                            FontWeight.bold,
+                                                            fontSize: 12),
+                                                      ),
+                                                      Text(
+                                                        items[1]
+                                                            .payoutamt
+                                                            .toString(), // Add this line to display shortDesc
+                                                        style: TextStyle(
+                                                            color: Colors.white,
+                                                            fontWeight:
+                                                            FontWeight.bold,
+                                                            fontSize: 12),
+                                                      ),
+                                                    ],
+                                                  ),
                                                 ),
                                               ),
                                             ),
                                           ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   )
                                 ],
                               ),

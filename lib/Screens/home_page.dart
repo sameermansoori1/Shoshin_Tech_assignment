@@ -75,7 +75,7 @@ class HomePage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsets.all(9.0),
+                              padding: const EdgeInsets.all(3.0),
                               child: Row(
                                 children: [
                                   Container(
@@ -211,7 +211,7 @@ class HomePage extends StatelessWidget {
                                         autoPlayAnimationDuration:
                                             Duration(milliseconds: 800),
                                         autoPlayCurve: Curves.fastOutSlowIn,
-                                        viewportFraction: 0.58),
+                                        viewportFraction: 0.68),
                                     items: items.map((task) {
                                       return Builder(
                                         builder: (BuildContext context) {
@@ -270,7 +270,7 @@ class HomePage extends StatelessWidget {
                                   height: 185.0,
                                   autoPlay: true,
                                   initialPage: 1,
-                                  viewportFraction: 0.5,
+                                  viewportFraction: 0.6,
                                   padEnds: false,
                                 ),
                                 items: items.map((task) {
@@ -375,7 +375,7 @@ class HomePage extends StatelessWidget {
                             ),
                             Expanded(
                               child: Padding(
-                                padding: const EdgeInsets.only(left: 9.0),
+                                padding: const EdgeInsets.only(left: 8.0),
                                 child: Container(
                                   width: MediaQuery.of(context).size.width,
                                   child: ListView.builder(
@@ -503,7 +503,7 @@ class HomePage extends StatelessWidget {
                                               ),
                                               Padding(
                                                 padding: const EdgeInsets.only(
-                                                    left: 100.0, top: 18),
+                                                    left: 70.0, top: 18),
                                                 child: Row(
                                                   children: [
                                                     Icon(
