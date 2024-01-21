@@ -62,7 +62,6 @@ class Kotak extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(15.0),
                                       border: Border.all(
                                         color: Colors.white,
-                                        // Set the border color to pink
                                         width: 2.0,
                                       ),
                                     ),
@@ -78,7 +77,7 @@ class Kotak extends StatelessWidget {
                                               items[1]
                                                   .brand!
                                                   .logo
-                                                  .toString(), // Use the thumbnail URL from the TaskModel
+                                                  .toString(),
                                               fit: BoxFit.fitHeight,
                                             ),
                                           ),
@@ -94,7 +93,7 @@ class Kotak extends StatelessWidget {
                                                 child: Text(
                                                   items[1]
                                                       .title
-                                                      .toString(), // Add this line to display shortDesc
+                                                      .toString(),
                                                   style: TextStyle(
                                                       color: Colors.black
                                                           .withOpacity(0.73),
@@ -114,7 +113,7 @@ class Kotak extends StatelessWidget {
                                                   child: Text(
                                                     items[0]
                                                         .ctaLong
-                                                        .toString(), // Add this line to display shortDesc
+                                                        .toString(),
                                                     style: TextStyle(
                                                         color: Colors.black54,
                                                         fontWeight:
@@ -199,7 +198,7 @@ class Kotak extends StatelessWidget {
                                         BorderRadius.circular(20.0),
                                         border: Border.all(
                                           color: Colors.green,
-                                          // Set the border color to pink
+
                                           width: 2.0,
                                         ),
                                       ),
@@ -222,7 +221,7 @@ class Kotak extends StatelessWidget {
                                             child: Text(
                                               detail[0]
                                                   .description
-                                                  .toString(), // Add this line to display shortDesc
+                                                  .toString(),
                                               style: TextStyle(
                                                   color: Colors.black
                                                       .withOpacity(0.73),
@@ -240,13 +239,13 @@ class Kotak extends StatelessWidget {
                                               decoration: BoxDecoration(
                                                 color: Colors.green,
                                                 borderRadius: BorderRadius.circular(
-                                                    11), // Set half of the width or height to make it circular
+                                                    11),
                                               ),
                                               child: Center(
                                                   child: Text(
                                                     detail[1]
                                                         .payout
-                                                        .toString(), // Add this line to display shortDesc
+                                                        .toString(),
                                                     style: TextStyle(
                                                         color: Colors.black
                                                             .withOpacity(0.73),
@@ -269,7 +268,6 @@ class Kotak extends StatelessWidget {
                                         BorderRadius.circular(20.0),
                                         border: Border.all(
                                           color: Colors.orange,
-                                          // Set the border color to pink
                                           width: 2.0,
                                         ),
                                       ),
@@ -298,7 +296,7 @@ class Kotak extends StatelessWidget {
                                                 child: Text(
                                                   detail[0]
                                                       .description
-                                                      .toString(), // Add this line to display shortDesc
+                                                      .toString(),
                                                   style: TextStyle(
                                                       color: Colors.black
                                                           .withOpacity(0.73),
@@ -318,13 +316,13 @@ class Kotak extends StatelessWidget {
                                                     color: Colors.orange,
                                                     borderRadius:
                                                     BorderRadius.circular(
-                                                        11), // Set half of the width or height to make it circular
+                                                        11),
                                                   ),
                                                   child: Center(
                                                       child: Text(
                                                         detail[1]
                                                             .payout
-                                                            .toString(), // Add this line to display shortDesc
+                                                            .toString(),
                                                         style: TextStyle(
                                                             color: Colors.black
                                                                 .withOpacity(0.73),
@@ -342,7 +340,7 @@ class Kotak extends StatelessWidget {
                                               child: Text(
                                                 items[1]
                                                     .shortDesc
-                                                    .toString(), // Add this line to display shortDesc
+                                                    .toString(),
                                                 style: TextStyle(
                                                     color: Colors.black
                                                         .withOpacity(0.5),
@@ -391,7 +389,7 @@ class Kotak extends StatelessWidget {
                                             height: 30,
                                             width: 240,
                                             child: Text(
-                                              "Refer Kotak to friend", // Add this line to display shortDesc
+                                              "Refer Kotak to friend",
                                               style: TextStyle(
                                                   color: Colors.black
                                                       .withOpacity(0.73),
@@ -409,13 +407,13 @@ class Kotak extends StatelessWidget {
                                               decoration: BoxDecoration(
                                                 color: Colors.white,
                                                 borderRadius: BorderRadius.circular(
-                                                    11), // Set half of the width or height to make it circular
+                                                    11),
                                               ),
                                               child: Center(
                                                   child: Text(
                                                     detail[1]
                                                         .payout
-                                                        .toString(), // Add this line to display shortDesc
+                                                        .toString(),
                                                     style: TextStyle(
                                                         color: Colors.blue,
                                                         fontWeight: FontWeight.bold,
@@ -461,7 +459,7 @@ class Kotak extends StatelessWidget {
                                             height: 30,
                                             width: 238,
                                             child: Text(
-                                              "Open zero balance savings account ", // Add this line to display shortDesc
+                                              "Open zero balance savings account ",
                                               style: TextStyle(
                                                   color: Colors.black
                                                       .withOpacity(0.73),
@@ -479,13 +477,13 @@ class Kotak extends StatelessWidget {
                                               decoration: BoxDecoration(
                                                 color: Colors.white,
                                                 borderRadius: BorderRadius.circular(
-                                                    11), // Set half of the width or height to make it circular
+                                                    11),
                                               ),
                                               child: Center(
                                                   child: Text(
                                                     detail[1]
                                                         .payout
-                                                        .toString(), // Add this line to display shortDesc
+                                                        .toString(),
                                                     style: TextStyle(
                                                         color: Colors.blue,
                                                         fontWeight: FontWeight.bold,
@@ -510,7 +508,7 @@ class Kotak extends StatelessWidget {
                                                       child: Text(
                                                         items[1]
                                                             .totallead
-                                                            .toString(), // Add this line to display shortDesc
+                                                            .toString(),
                                                         style: TextStyle(
                                                             color:
                                                             Colors.deepOrange,
@@ -523,7 +521,7 @@ class Kotak extends StatelessWidget {
                                                 ),
                                                 Container(
                                                   child: Text(
-                                                    " users has already participated", // Add this line to display shortDesc
+                                                    " users has already participated",
                                                     style: TextStyle(
                                                         color: Colors.deepOrange,
                                                         fontWeight: FontWeight.bold,
@@ -557,7 +555,7 @@ class Kotak extends StatelessWidget {
                                                   child: Row(
                                                     children: [
                                                       Text(
-                                                        "Get at ₹", // Add this line to display shortDesc
+                                                        "Get at ₹",
                                                         style: TextStyle(
                                                             color: Colors.white,
                                                             fontWeight:
@@ -567,7 +565,7 @@ class Kotak extends StatelessWidget {
                                                       Text(
                                                         items[1]
                                                             .payoutamt
-                                                            .toString(), // Add this line to display shortDesc
+                                                            .toString(),
                                                         style: TextStyle(
                                                             color: Colors.white,
                                                             fontWeight:

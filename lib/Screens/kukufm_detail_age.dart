@@ -79,7 +79,7 @@ class KukufmPage extends StatelessWidget {
                                               items[0]
                                                   .brand!
                                                   .logo
-                                                  .toString(), // Use the thumbnail URL from the TaskModel
+                                                  .toString(),
                                               fit: BoxFit.fitHeight,
                                             ),
                                           ),
@@ -95,7 +95,7 @@ class KukufmPage extends StatelessWidget {
                                                 child: Text(
                                                   items[0]
                                                       .title
-                                                      .toString(), // Add this line to display shortDesc
+                                                      .toString(),
                                                   style: TextStyle(
                                                       color: Colors.black
                                                           .withOpacity(0.73),
@@ -115,7 +115,7 @@ class KukufmPage extends StatelessWidget {
                                                   child: Text(
                                                     items[0]
                                                         .ctaLong
-                                                        .toString(), // Add this line to display shortDesc
+                                                        .toString(),
                                                     style: TextStyle(
                                                         color: Colors.black54,
                                                         fontWeight:
@@ -200,7 +200,6 @@ class KukufmPage extends StatelessWidget {
                                             BorderRadius.circular(20.0),
                                         border: Border.all(
                                           color: Colors.green,
-                                          // Set the border color to pink
                                           width: 2.0,
                                         ),
                                       ),
@@ -222,7 +221,7 @@ class KukufmPage extends StatelessWidget {
                                             child: Text(
                                               detail[0]
                                                   .description
-                                                  .toString(), // Add this line to display shortDesc
+                                                  .toString(),
                                               style: TextStyle(
                                                   color: Colors.black
                                                       .withOpacity(0.73),
@@ -240,13 +239,13 @@ class KukufmPage extends StatelessWidget {
                                               decoration: BoxDecoration(
                                                 color: Colors.green,
                                                 borderRadius: BorderRadius.circular(
-                                                    11), // Set half of the width or height to make it circular
+                                                    11),
                                               ),
                                               child: Center(
                                                   child: Text(
                                                 detail[0]
                                                     .payout
-                                                    .toString(), // Add this line to display shortDesc
+                                                    .toString(),
                                                 style: TextStyle(
                                                     color: Colors.black
                                                         .withOpacity(0.73),
@@ -269,7 +268,6 @@ class KukufmPage extends StatelessWidget {
                                             BorderRadius.circular(20.0),
                                         border: Border.all(
                                           color: Colors.orange,
-                                          // Set the border color to pink
                                           width: 2.0,
                                         ),
                                       ),
@@ -298,7 +296,7 @@ class KukufmPage extends StatelessWidget {
                                                 child: Text(
                                                   detail[0]
                                                       .description
-                                                      .toString(), // Add this line to display shortDesc
+                                                      .toString(),
                                                   style: TextStyle(
                                                       color: Colors.black
                                                           .withOpacity(0.73),
@@ -318,13 +316,13 @@ class KukufmPage extends StatelessWidget {
                                                     color: Colors.orange,
                                                     borderRadius:
                                                         BorderRadius.circular(
-                                                            11), // Set half of the width or height to make it circular
+                                                            11),
                                                   ),
                                                   child: Center(
                                                       child: Text(
                                                     detail[0]
                                                         .payout
-                                                        .toString(), // Add this line to display shortDesc
+                                                        .toString(),
                                                     style: TextStyle(
                                                         color: Colors.black
                                                             .withOpacity(0.73),
@@ -342,7 +340,7 @@ class KukufmPage extends StatelessWidget {
                                               child: Text(
                                                 items[0]
                                                     .shortDesc
-                                                    .toString(), // Add this line to display shortDesc
+                                                    .toString(),
                                                 style: TextStyle(
                                                     color: Colors.black
                                                         .withOpacity(0.5),
@@ -391,7 +389,7 @@ class KukufmPage extends StatelessWidget {
                                             height: 30,
                                             width: 240,
                                             child: Text(
-                                              "Refer KUKUFM to friend", // Add this line to display shortDesc
+                                              "Refer KUKUFM to friend",
                                               style: TextStyle(
                                                   color: Colors.black
                                                       .withOpacity(0.73),
@@ -409,13 +407,13 @@ class KukufmPage extends StatelessWidget {
                                               decoration: BoxDecoration(
                                                 color: Colors.white,
                                                 borderRadius: BorderRadius.circular(
-                                                    11), // Set half of the width or height to make it circular
+                                                    11),
                                               ),
                                               child: Center(
                                                   child: Text(
                                                 detail[0]
                                                     .payout
-                                                    .toString(), // Add this line to display shortDesc
+                                                    .toString(),
                                                 style: TextStyle(
                                                     color: Colors.blue,
                                                     fontWeight: FontWeight.bold,
@@ -461,7 +459,7 @@ class KukufmPage extends StatelessWidget {
                                             height: 30,
                                             width: 238,
                                             child: Text(
-                                              "Listen to fav Audiobooks & stories", // Add this line to display shortDesc
+                                              "Listen to fav Audiobooks & stories",
                                               style: TextStyle(
                                                   color: Colors.black
                                                       .withOpacity(0.73),
@@ -479,13 +477,13 @@ class KukufmPage extends StatelessWidget {
                                               decoration: BoxDecoration(
                                                 color: Colors.white,
                                                 borderRadius: BorderRadius.circular(
-                                                    11), // Set half of the width or height to make it circular
+                                                    11),
                                               ),
                                               child: Center(
                                                   child: Text(
                                                 detail[0]
                                                     .payout
-                                                    .toString(), // Add this line to display shortDesc
+                                                    .toString(),
                                                 style: TextStyle(
                                                     color: Colors.blue,
                                                     fontWeight: FontWeight.bold,
@@ -510,7 +508,7 @@ class KukufmPage extends StatelessWidget {
                                                     child: Text(
                                                       items[index]
                                                           .totallead
-                                                          .toString(), // Add this line to display shortDesc
+                                                          .toString(),
                                                       style: TextStyle(
                                                           color:
                                                               Colors.deepOrange,
@@ -523,7 +521,7 @@ class KukufmPage extends StatelessWidget {
                                               ),
                                               Container(
                                                 child: Text(
-                                                  " users has already participated", // Add this line to display shortDesc
+                                                  " users has already participated",
                                                   style: TextStyle(
                                                       color: Colors.deepOrange,
                                                       fontWeight: FontWeight.bold,
@@ -557,7 +555,7 @@ class KukufmPage extends StatelessWidget {
                                                   child: Row(
                                                     children: [
                                                       Text(
-                                                        "Get at ₹", // Add this line to display shortDesc
+                                                        "Get at ₹",
                                                         style: TextStyle(
                                                             color: Colors.white,
                                                             fontWeight:
@@ -567,7 +565,7 @@ class KukufmPage extends StatelessWidget {
                                                       Text(
                                                         items[index]
                                                             .payoutamt
-                                                            .toString(), // Add this line to display shortDesc
+                                                            .toString(),
                                                         style: TextStyle(
                                                             color: Colors.white,
                                                             fontWeight:
