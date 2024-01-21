@@ -273,75 +273,96 @@ class HomePage extends StatelessWidget {
                                   viewportFraction: 0.6,
                                   padEnds: false,
                                 ),
-                                items: items.map((task) {
+                                items: items.asMap().entries.map((entry) {
+                                  int index = entry.key;
+                                  TaskModel task = entry.value;
                                   return Builder(
                                     builder: (BuildContext context) {
-                                      return Stack(
-                                          fit: StackFit.passthrough,
-                                          children: [
-                                            ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(20),
-                                              child: Container(
-                                                width: 185,
-                                                margin: EdgeInsets.symmetric(
-                                                    horizontal: 0.0),
-                                                decoration: BoxDecoration(
-                                                    color: Colors.white),
-                                                child: Image.network(
-                                                  task.thumbnail ??
-                                                      "", // Use the thumbnail URL from the TaskModel
-                                                  fit: BoxFit.contain,
+                                      return GestureDetector(
+                                        onTap: () {
+                                          switch (index) {
+                                            case 0:
+                                              Get.to(KukufmPage());
+                                              break;
+                                            case 1:
+                                              Get.to(Kotak());
+                                              break;
+                                            case 2:
+                                              Get.to(RageCoffe());
+                                              break;
+
+                                            default:
+
+                                              break;
+                                          }
+                                        },
+                                        child: Stack(
+                                            fit: StackFit.passthrough,
+                                            children: [
+                                              ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(20),
+                                                child: Container(
+                                                  width: 185,
+                                                  margin: EdgeInsets.symmetric(
+                                                      horizontal: 0.0),
+                                                  decoration: BoxDecoration(
+                                                      color: Colors.white),
+                                                  child: Image.network(
+                                                    task.thumbnail ??
+                                                        "",
+                                                    fit: BoxFit.contain,
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                            Container(
-                                              margin:
-                                                  EdgeInsets.only(top: 115.0),
-                                              width: 185,
-                                              decoration: BoxDecoration(
-                                                  color: Colors.black38,
-                                                  borderRadius:
-                                                      BorderRadius.only(
-                                                          bottomRight:
-                                                              Radius.circular(
-                                                                  20),
-                                                          bottomLeft:
-                                                              Radius.circular(
-                                                                  20))),
-                                              child: Column(
-                                                children: [
-                                                  Text(
-                                                    task.title ??
-                                                        "", // Add this line to display shortDesc
-                                                    style: TextStyle(
+                                              Container(
+                                                margin:
+                                                    EdgeInsets.only(top: 115.0),
+                                                width: 185,
+                                                decoration: BoxDecoration(
+                                                    color: Colors.black38,
+                                                    borderRadius:
+                                                        BorderRadius.only(
+                                                            bottomRight:
+                                                                Radius.circular(
+                                                                    20),
+                                                            bottomLeft:
+                                                                Radius.circular(
+                                                                    20))),
+                                                child: Column(
+                                                  children: [
+                                                    Text(
+                                                      task.title ??
+                                                          "",
+                                                      style: TextStyle(
+                                                          color: Colors.white,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize: 10),
+                                                    ),
+                                                    Text(
+                                                      task.ctaLong ??
+                                                          "",
+                                                      style: TextStyle(
                                                         color: Colors.white,
                                                         fontWeight:
                                                             FontWeight.bold,
-                                                        fontSize: 10),
-                                                  ),
-                                                  Text(
-                                                    task.ctaLong ??
-                                                        "", // Add this line to display shortDesc
-                                                    style: TextStyle(
-                                                      color: Colors.white,
-                                                      fontWeight:
-                                                          FontWeight.bold,
+                                                      ),
                                                     ),
-                                                  ),
-                                                  Text(
-                                                    task.payout ??
-                                                        "", // Add this line to display shortDesc
-                                                    style: TextStyle(
-                                                      color: Colors.white,
-                                                      fontWeight:
-                                                          FontWeight.bold,
+                                                    Text(
+                                                      task.payout ??
+                                                          "",
+                                                      style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                      ),
                                                     ),
-                                                  ),
-                                                ],
-                                              ),
-                                            )
-                                          ]);
+                                                  ],
+                                                ),
+                                              )
+                                            ]),
+                                      );
                                     },
                                   );
                                 }).toList(),
@@ -355,7 +376,7 @@ class HomePage extends StatelessWidget {
                                     onTap: () {
                                       Get.snackbar(
                                           "More offer section is in development phase",
-                                          "This Feature is not developed yet message to shoshi.tech email for more details.");
+                                          "This Feature is not developed yet message to shoshin.tech email for more details.");
                                     },
                                     child: Icon(
                                       Icons.menu_open_rounded,
@@ -380,7 +401,6 @@ class HomePage extends StatelessWidget {
                                   width: MediaQuery.of(context).size.width,
                                   child: ListView.builder(
                                     itemCount: 3,
-                                    // Replace with the actual number of items in your list
                                     itemBuilder:
                                         (BuildContext context, int index) {
                                       List<Color> borderColors = [
@@ -419,7 +439,6 @@ class HomePage extends StatelessWidget {
                                                 BorderRadius.circular(15.0),
                                             border: Border.all(
                                               color: borderColor,
-                                              // Set the border color to pink
                                               width: 2.0,
                                             ),
                                           ),
@@ -432,7 +451,7 @@ class HomePage extends StatelessWidget {
                                                   items[index]
                                                       .brand!
                                                       .logo
-                                                      .toString(), // Use the thumbnail URL from the TaskModel
+                                                      .toString(),
                                                   fit: BoxFit.cover,
                                                 ),
                                               ),
@@ -450,7 +469,7 @@ class HomePage extends StatelessWidget {
                                                         items[index]
                                                             .brand!
                                                             .title
-                                                            .toString(), // Add this line to display shortDesc
+                                                            .toString(),
                                                         style: TextStyle(
                                                             color:
                                                                 Colors.black54,
@@ -477,7 +496,7 @@ class HomePage extends StatelessWidget {
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .circular(
-                                                                            5.0), // Adjust the radius as needed
+                                                                            5.0),
                                                               ),
                                                             ),
                                                             side: MaterialStateProperty
@@ -488,7 +507,7 @@ class HomePage extends StatelessWidget {
                                                           child: Text(
                                                             items[index]
                                                                 .payout
-                                                                .toString(), // Add this line to display shortDesc
+                                                                .toString(),
                                                             style: TextStyle(
                                                                 color: Colors
                                                                     .black54,
@@ -515,7 +534,7 @@ class HomePage extends StatelessWidget {
                                                       child: Text(
                                                         items[index]
                                                             .totallead
-                                                            .toString(), // Add this line to display shortDesc
+                                                            .toString(),
                                                         style: TextStyle(
                                                             color: Colors
                                                                 .deepOrange,
@@ -529,7 +548,7 @@ class HomePage extends StatelessWidget {
                                               )
                                             ],
                                           ),
-                                          // Add other widgets or customize the ListTile as needed
+
                                         ),
                                       );
                                     },
