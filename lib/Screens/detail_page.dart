@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shoshin_tech_assignment/Screens/Kotak_page.dart';
+import 'package:shoshin_tech_assignment/Screens/RageCoffe_page.dart';
 import 'package:shoshin_tech_assignment/Screens/home_page.dart';
 import 'package:shoshin_tech_assignment/Screens/kukufm_detail_age.dart';
 
@@ -30,6 +32,8 @@ class DetailPage extends StatelessWidget {
             child: Column(
               children: [
                 KukufmPage(),
+                Kotak(),
+                RageCoffe(),
 
               ],
             ),

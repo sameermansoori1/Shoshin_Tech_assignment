@@ -22,7 +22,7 @@
     "payout_currency": "\u20b9",
     "ctaAction": "https://google.com/",
     "custom_data": {
-      "app_rating": "",
+      "app_rating": 4.0,
       "wall_url": "https://play-lh.googleusercontent.com/6RaM9kTS9df5e1n4JBS-gVHK4DoyuPUw0P2tyytCI2H50-k2a1GPgpQBpl9IupvT8A=w526-h296-rw",
       "dominant_color": "#fe5636"
     }
@@ -50,7 +50,7 @@
     "payout_currency": "\u20b9",
     "ctaAction": "https://google.com/",
     "custom_data": {
-      "app_rating": "4.1",
+      "app_rating": 4.1,
       "wall_url": "https://cdn.zeebiz.com/sites/default/files/styles/zeebiz_850x478/public/2018/07/08/44575-kotak-mahindra-811-account-official-website.png?itok=kNisqvy7",
       "dominant_color": "#f20044"
     }
@@ -78,7 +78,7 @@
     "payout_currency": "\u20b9",
     "ctaAction": "https://google.com/",
     "custom_data": {
-      "app_rating": "4.2",
+      "app_rating": 4.7,
       "wall_url": "https://cdn.shopify.com/s/files/1/0062/9587/9780/products/perfect-coffee-set-combo-760074_1024x1024.jpg?v=1656177607",
       "dominant_color": "#573c05"
     }

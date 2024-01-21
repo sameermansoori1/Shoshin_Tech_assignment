@@ -23,7 +23,7 @@ class Brand {
 }
 
 class CustomData {
-  String? apprating;
+  double? apprating;
   String? wallurl;
   String? dominantcolor;
 

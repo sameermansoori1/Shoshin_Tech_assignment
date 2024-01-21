@@ -1,4 +1,4 @@
-class Root {
+class DetailModel {
   String? eventId;
   String? title;
   String? description;
@@ -7,9 +7,9 @@ class Root {
   int? payoutamt;
   String? payoutcurrency;
 
-  Root({this.eventId, this.title, this.description, this.payout, this.isCompleted, this.payoutamt, this.payoutcurrency});
+  DetailModel({this.eventId, this.title, this.description, this.payout, this.isCompleted, this.payoutamt, this.payoutcurrency});
 
-  Root.fromJson(Map<String, dynamic> json) {
+  DetailModel.fromJson(Map<String, dynamic> json) {
     eventId = json['eventId'];
     title = json['title'];
     description = json['description'];
