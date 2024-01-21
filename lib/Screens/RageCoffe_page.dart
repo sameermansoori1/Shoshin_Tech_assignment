@@ -17,7 +17,9 @@ class RageCoffe extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () {Get.to(HomePage());},
+          onPressed: () {
+            Get.to(HomePage());
+          },
           icon: Icon(Icons.arrow_back, color: Colors.white),
         ),
         title: Text(
@@ -98,7 +100,7 @@ class RageCoffe extends StatelessWidget {
                                                       color: Colors.black
                                                           .withOpacity(0.73),
                                                       fontWeight:
-                                                      FontWeight.bold,
+                                                          FontWeight.bold,
                                                       fontSize: 12),
                                                 ),
                                               ),
@@ -117,7 +119,7 @@ class RageCoffe extends StatelessWidget {
                                                     style: TextStyle(
                                                         color: Colors.black54,
                                                         fontWeight:
-                                                        FontWeight.bold,
+                                                            FontWeight.bold,
                                                         fontSize: 10),
                                                   ),
                                                 ),
@@ -130,8 +132,8 @@ class RageCoffe extends StatelessWidget {
                                                     width: 40,
                                                     child: RatingBar.builder(
                                                       initialRating: items[2]
-                                                          .customdata!
-                                                          .apprating ??
+                                                              .customdata!
+                                                              .apprating ??
                                                           0.0,
                                                       minRating: 1,
                                                       direction: Axis.vertical,
@@ -139,7 +141,7 @@ class RageCoffe extends StatelessWidget {
                                                       itemCount: 5,
                                                       itemSize: 30.0,
                                                       itemPadding:
-                                                      EdgeInsets.symmetric(
+                                                          EdgeInsets.symmetric(
                                                         horizontal: 0.0,
                                                       ),
                                                       itemBuilder:
@@ -167,7 +169,7 @@ class RageCoffe extends StatelessWidget {
                                   SizedBox(width: 10, height: 15),
                                   Column(
                                     crossAxisAlignment:
-                                    CrossAxisAlignment.start,
+                                        CrossAxisAlignment.start,
                                     children: [
                                       SizedBox(
                                         width: 10,
@@ -195,7 +197,7 @@ class RageCoffe extends StatelessWidget {
                                       decoration: BoxDecoration(
                                         color: Colors.white,
                                         borderRadius:
-                                        BorderRadius.circular(20.0),
+                                            BorderRadius.circular(20.0),
                                         border: Border.all(
                                           color: Colors.green,
                                           // Set the border color to pink
@@ -208,10 +210,10 @@ class RageCoffe extends StatelessWidget {
                                               bottom: 2.0),
                                           child: Container(
                                               child: Icon(
-                                                Icons.check_circle_outline,
-                                                color: Colors.green,
-                                                size: 33,
-                                              )),
+                                            Icons.check_circle_outline,
+                                            color: Colors.green,
+                                            size: 33,
+                                          )),
                                         ),
                                         SizedBox(
                                           width: 5,
@@ -246,15 +248,15 @@ class RageCoffe extends StatelessWidget {
                                               ),
                                               child: Center(
                                                   child: Text(
-                                                    detail[2]
-                                                        .payout
-                                                        .toString(), // Add this line to display shortDesc
-                                                    style: TextStyle(
-                                                        color: Colors.black
-                                                            .withOpacity(0.73),
-                                                        fontWeight: FontWeight.bold,
-                                                        fontSize: 7),
-                                                  )),
+                                                detail[2]
+                                                    .payout
+                                                    .toString(), // Add this line to display shortDesc
+                                                style: TextStyle(
+                                                    color: Colors.black
+                                                        .withOpacity(0.73),
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 7),
+                                              )),
                                             )),
                                       ]),
                                     ),
@@ -268,7 +270,7 @@ class RageCoffe extends StatelessWidget {
                                       decoration: BoxDecoration(
                                         color: Colors.white,
                                         borderRadius:
-                                        BorderRadius.circular(20.0),
+                                            BorderRadius.circular(20.0),
                                         border: Border.all(
                                           color: Colors.orange,
                                           // Set the border color to pink
@@ -283,17 +285,17 @@ class RageCoffe extends StatelessWidget {
                                                   bottom: 2.0),
                                               child: Container(
                                                   child: Icon(
-                                                    Icons.timer,
-                                                    color: Colors.orange,
-                                                    size: 33,
-                                                  )),
+                                                Icons.timer,
+                                                color: Colors.orange,
+                                                size: 33,
+                                              )),
                                             ),
                                             SizedBox(
                                               width: 5,
                                             ),
                                             Padding(
                                               padding:
-                                              const EdgeInsets.all(3.0),
+                                                  const EdgeInsets.all(3.0),
                                               child: Container(
                                                 height: 30,
                                                 width: 300,
@@ -305,7 +307,7 @@ class RageCoffe extends StatelessWidget {
                                                       color: Colors.black
                                                           .withOpacity(0.73),
                                                       fontWeight:
-                                                      FontWeight.bold,
+                                                          FontWeight.bold,
                                                       fontSize: 17),
                                                 ),
                                               ),
@@ -319,21 +321,21 @@ class RageCoffe extends StatelessWidget {
                                                   decoration: BoxDecoration(
                                                     color: Colors.orange,
                                                     borderRadius:
-                                                    BorderRadius.circular(
-                                                        11), // Set half of the width or height to make it circular
+                                                        BorderRadius.circular(
+                                                            11), // Set half of the width or height to make it circular
                                                   ),
                                                   child: Center(
                                                       child: Text(
-                                                        detail[2]
-                                                            .payout
-                                                            .toString(), // Add this line to display shortDesc
-                                                        style: TextStyle(
-                                                            color: Colors.black
-                                                                .withOpacity(0.73),
-                                                            fontWeight:
+                                                    detail[2]
+                                                        .payout
+                                                        .toString(), // Add this line to display shortDesc
+                                                    style: TextStyle(
+                                                        color: Colors.black
+                                                            .withOpacity(0.73),
+                                                        fontWeight:
                                                             FontWeight.bold,
-                                                            fontSize: 7),
-                                                      )),
+                                                        fontSize: 7),
+                                                  )),
                                                 )),
                                           ]),
                                           Padding(
@@ -366,7 +368,7 @@ class RageCoffe extends StatelessWidget {
                                       decoration: BoxDecoration(
                                         color: Colors.grey.shade200,
                                         borderRadius:
-                                        BorderRadius.circular(20.0),
+                                            BorderRadius.circular(20.0),
                                         border: Border.all(
                                           color: Colors.white,
                                           // Set the border color to pink
@@ -379,10 +381,10 @@ class RageCoffe extends StatelessWidget {
                                               bottom: 2.0),
                                           child: Container(
                                               child: Icon(
-                                                Icons.circle,
-                                                color: Colors.grey,
-                                                size: 33,
-                                              )),
+                                            Icons.circle,
+                                            color: Colors.grey,
+                                            size: 33,
+                                          )),
                                         ),
                                         SizedBox(
                                           width: 5,
@@ -415,14 +417,14 @@ class RageCoffe extends StatelessWidget {
                                               ),
                                               child: Center(
                                                   child: Text(
-                                                    detail[2]
-                                                        .payout
-                                                        .toString(), // Add this line to display shortDesc
-                                                    style: TextStyle(
-                                                        color: Colors.blue,
-                                                        fontWeight: FontWeight.bold,
-                                                        fontSize: 7),
-                                                  )),
+                                                detail[2]
+                                                    .payout
+                                                    .toString(), // Add this line to display shortDesc
+                                                style: TextStyle(
+                                                    color: Colors.blue,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 7),
+                                              )),
                                             )),
                                       ]),
                                     ),
@@ -437,7 +439,7 @@ class RageCoffe extends StatelessWidget {
                                       decoration: BoxDecoration(
                                         color: Colors.grey.shade200,
                                         borderRadius:
-                                        BorderRadius.circular(20.0),
+                                            BorderRadius.circular(20.0),
                                         border: Border.all(
                                           color: Colors.white,
                                           width: 2.0,
@@ -449,10 +451,10 @@ class RageCoffe extends StatelessWidget {
                                               bottom: 2.0),
                                           child: Container(
                                               child: Icon(
-                                                Icons.circle,
-                                                color: Colors.grey,
-                                                size: 33,
-                                              )),
+                                            Icons.circle,
+                                            color: Colors.grey,
+                                            size: 33,
+                                          )),
                                         ),
                                         SizedBox(
                                           width: 5,
@@ -485,14 +487,14 @@ class RageCoffe extends StatelessWidget {
                                               ),
                                               child: Center(
                                                   child: Text(
-                                                    detail[2]
-                                                        .payout
-                                                        .toString(), // Add this line to display shortDesc
-                                                    style: TextStyle(
-                                                        color: Colors.blue,
-                                                        fontWeight: FontWeight.bold,
-                                                        fontSize: 7),
-                                                  )),
+                                                detail[2]
+                                                    .payout
+                                                    .toString(), // Add this line to display shortDesc
+                                                style: TextStyle(
+                                                    color: Colors.blue,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 7),
+                                              )),
                                             )),
                                       ]),
                                     ),
@@ -515,9 +517,9 @@ class RageCoffe extends StatelessWidget {
                                                         .toString(), // Add this line to display shortDesc
                                                     style: TextStyle(
                                                         color:
-                                                        Colors.deepOrange,
+                                                            Colors.deepOrange,
                                                         fontWeight:
-                                                        FontWeight.bold,
+                                                            FontWeight.bold,
                                                         fontSize: 12),
                                                   ),
                                                 ),
@@ -549,7 +551,7 @@ class RageCoffe extends StatelessWidget {
                                             decoration: BoxDecoration(
                                                 color: Colors.blue,
                                                 borderRadius:
-                                                BorderRadius.circular(20)),
+                                                    BorderRadius.circular(20)),
                                             height: 40,
                                             width: 270,
                                             child: Center(
@@ -563,7 +565,7 @@ class RageCoffe extends StatelessWidget {
                                                       style: TextStyle(
                                                           color: Colors.white,
                                                           fontWeight:
-                                                          FontWeight.bold,
+                                                              FontWeight.bold,
                                                           fontSize: 12),
                                                     ),
                                                     Text(
@@ -573,7 +575,7 @@ class RageCoffe extends StatelessWidget {
                                                       style: TextStyle(
                                                           color: Colors.white,
                                                           fontWeight:
-                                                          FontWeight.bold,
+                                                              FontWeight.bold,
                                                           fontSize: 12),
                                                     ),
                                                   ],
@@ -601,12 +603,12 @@ class RageCoffe extends StatelessWidget {
               );
             }
           }),
-
     );
   }
+
   Future<List<List<dynamic>>> readJsonData() async {
     final tasksJsonData =
-    await rootBundle.rootBundle.loadString("assets/data/dummy_tasks.json");
+        await rootBundle.rootBundle.loadString("assets/data/dummy_tasks.json");
     final detailsJsonData = await rootBundle.rootBundle
         .loadString("assets/data/dummy_details.json");
 
@@ -614,10 +616,10 @@ class RageCoffe extends StatelessWidget {
     final detailsList = json.decode(detailsJsonData) as List<dynamic>;
 
     List<TaskModel> taskModels =
-    tasksList.map((e) => TaskModel.fromJson(e)).toList();
+        tasksList.map((e) => TaskModel.fromJson(e)).toList();
 
     List<DetailModel> detailModels =
-    detailsList.map((e) => DetailModel.fromJson(e)).toList();
+        detailsList.map((e) => DetailModel.fromJson(e)).toList();
 
     return [taskModels, detailModels];
   }

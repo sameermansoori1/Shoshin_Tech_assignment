@@ -19,7 +19,10 @@ class HomePage extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           leading: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.snackbar("Menu button under development",
+                  "This Feature is not developed yet message to shoshi.tech email for more details.");
+            },
             icon: Icon(Icons.menu, color: Colors.white),
           ),
           title: Text(
@@ -31,7 +34,10 @@ class HomePage extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton.icon(
                 onPressed: () {
-                  // Add your onPressed logic here
+                  Get.defaultDialog(
+                      title: "Wallet is UnderDevelopment!",
+                      content: Text(
+                          "This Feature is not developed yet message to shoshi.tech email for more details."));
                 },
                 icon: Icon(
                   Icons.wallet_rounded,
@@ -82,7 +88,9 @@ class HomePage extends StatelessWidget {
                                                   content: Center(
                                                     child: Text(
                                                         "All Offer section Functionality should be added soon."),
-                                                  ),backgroundColor: Colors.blueAccent);
+                                                  ),
+                                                  backgroundColor:
+                                                      Colors.blueAccent);
                                             },
                                             icon: Icon(
                                               Icons.add_alert,
@@ -102,10 +110,14 @@ class HomePage extends StatelessWidget {
                                     child: Column(
                                       children: [
                                         IconButton(
-                                            onPressed: () {Get.defaultDialog(
-                                                title: "Updating Soon!",
-                                                content: Text(
-                                                    "Gift section Functionality should be added soon."),backgroundColor: Colors.blueAccent);},
+                                            onPressed: () {
+                                              Get.defaultDialog(
+                                                  title: "Updating Soon!",
+                                                  content: Text(
+                                                      "Gift section Functionality should be added soon."),
+                                                  backgroundColor:
+                                                      Colors.blueAccent);
+                                            },
                                             icon: Icon(
                                               Icons.wallet_giftcard,
                                               size: 35,
@@ -124,10 +136,14 @@ class HomePage extends StatelessWidget {
                                     child: Column(
                                       children: [
                                         IconButton(
-                                            onPressed: () {Get.defaultDialog(
-                                                title: "Updating Soon!",
-                                                content: Text(
-                                                    "Upcoming section Functionality should be added soon."),backgroundColor: Colors.blueAccent);},
+                                            onPressed: () {
+                                              Get.defaultDialog(
+                                                  title: "Updating Soon!",
+                                                  content: Text(
+                                                      "Upcoming section Functionality should be added soon."),
+                                                  backgroundColor:
+                                                      Colors.blueAccent);
+                                            },
                                             icon: Icon(
                                               Icons.access_time,
                                               size: 35,
@@ -146,10 +162,14 @@ class HomePage extends StatelessWidget {
                                     child: Column(
                                       children: [
                                         IconButton(
-                                            onPressed: () {Get.defaultDialog(
-                                                title: "Updating Soon!",
-                                                content: Text(
-                                                    "My Offer section Functionality should be added soon."),backgroundColor: Colors.blueAccent);},
+                                            onPressed: () {
+                                              Get.defaultDialog(
+                                                  title: "Updating Soon!",
+                                                  content: Text(
+                                                      "My Offer section Functionality should be added soon."),
+                                                  backgroundColor:
+                                                      Colors.blueAccent);
+                                            },
                                             icon: Icon(
                                               Icons.check_circle_outline,
                                               size: 35,
@@ -331,10 +351,17 @@ class HomePage extends StatelessWidget {
                               padding: const EdgeInsets.all(9.0),
                               child: Row(
                                 children: [
-                                  Icon(
-                                    Icons.menu_open_rounded,
-                                    color: Colors.blue,
-                                    size: 40,
+                                  GestureDetector(
+                                    onTap: () {
+                                      Get.snackbar(
+                                          "More offer section is in development phase",
+                                          "This Feature is not developed yet message to shoshi.tech email for more details.");
+                                    },
+                                    child: Icon(
+                                      Icons.menu_open_rounded,
+                                      color: Colors.blue,
+                                      size: 40,
+                                    ),
                                   ),
                                   Text(
                                     "More Offers",
@@ -376,9 +403,9 @@ class HomePage extends StatelessWidget {
                                             case 2:
                                               Get.to(RageCoffe());
                                               break;
-                                          // Add more cases as needed
+                                            // Add more cases as needed
                                             default:
-                                            // Handle default case
+                                              // Handle default case
                                               break;
                                           }
                                         },
