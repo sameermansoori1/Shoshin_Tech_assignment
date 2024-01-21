@@ -43,3 +43,25 @@ intuitive user interface and a smooth user experience using Getx for State Manag
 
 ![App Screenshot](https://github.com/sameermansoori1/Shoshin_Tech_assignment/assets/88525320/607ff859-24c5-4f04-ae0e-62277301b5f8)
 
+## Features
+
+- Smooth Ui (Getx)
+- Json Data Handling
+- Carousel_slider for items
+- flutter_rating_bar for displaing rating of each items
+
+
+## 🚀 About Me
+I'm Sameer Mansoori, a skilled Flutter developer with more than one year of experience and a passion for open source. I'm eager to bring my Flutter expertise to your team at Shoshin.tech.
+
+My Flutter proficiency, open-source contributions, and problem-solving skills make me an asset for your projects. I'm enthusiastic about the innovation and excellence I see in your company.
+
+Could we chat about the potential for an internship? Let's connect and explore how we can work together to create exceptional mobile experiences.
+
+Looking forward to your response.
+
+Best regards,
+Sameer Mansoori
+
++919616373247
+CV- https://drive.google.com/file/d/1NHGrr1hCdO9PUSFPCJqwiz9oq463ludq/view?usp=drivesdk
