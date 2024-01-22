@@ -41,10 +41,11 @@ intuitive user interface and a smooth user experience using Getx for State Manag
 
 ## Screenshots/Gif
 
-![App Screenshot](https://github.com/sameermansoori1/Shoshin_Tech_assignment/assets/88525320/4cee0438-d0eb-4031-92f5-2230f9c07c7f)
+
+![navigate to detail](https://github.com/sameermansoori1/Shoshin_Tech_assignment/assets/88525320/e5abd287-bd4b-4ebb-9ddb-36ebaac33f25)
 
 
-![App Screenshot](https://github.com/sameermansoori1/Shoshin_Tech_assignment/assets/88525320/d76ff098-a240-4e64-ae31-eb11ece4f82c)
+![snackbars and dialogs](https://github.com/sameermansoori1/Shoshin_Tech_assignment/assets/88525320/40594071-b423-432d-a253-acfeb8093b2c)
 
 
 ![App Screenshot](https://github.com/sameermansoori1/Shoshin_Tech_assignment/assets/88525320/607ff859-24c5-4f04-ae0e-62277301b5f8)
