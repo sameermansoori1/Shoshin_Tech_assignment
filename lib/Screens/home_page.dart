@@ -309,7 +309,7 @@ class HomePage extends StatelessWidget {
                                                   decoration: BoxDecoration(
                                                       color: Colors.white),
                                                   child: Image.network(
-                                                    task.thumbnail ??
+                                                    task.customdata!.wallurl ??
                                                         "",
                                                     fit: BoxFit.contain,
                                                   ),
