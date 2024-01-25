@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shoshin_tech_assignment/Screens/Kotak_page.dart';
 import 'package:shoshin_tech_assignment/Screens/RageCoffe_page.dart';
+import 'package:shoshin_tech_assignment/Screens/detail_page.dart';
 import 'package:shoshin_tech_assignment/Screens/kukufm_detail_age.dart';
 import 'package:shoshin_tech_assignment/controller/app_controller.dart';
 import 'package:shoshin_tech_assignment/models/detail_model.dart';
@@ -223,7 +224,7 @@ class HomePage extends StatelessWidget {
                                     items: items.asMap().entries.map((entry) {
                                       int index = entry.key;
                                       TaskModel task = items[index];
-                                      DetailModel detailInfo = detail[index]; // Assuming detail has the same length as tasks
+                                      DetailModel detailInfo = detail[index];
                                       return Builder(
                                         builder: (BuildContext context) {
                                           return Container(
@@ -291,7 +292,7 @@ class HomePage extends StatelessWidget {
                                 ),
                                 items: items.asMap().entries.map((entry) {
                                   int index = entry.key;
-                                  TaskModel task = entry.value;
+                                  TaskModel task = items[index];
                                   return Builder(
                                     builder: (BuildContext context) {
                                       return GestureDetector(
@@ -310,6 +311,8 @@ class HomePage extends StatelessWidget {
                                             default:
                                               break;
                                           }
+                                          //Get.to(DetailPage(index: index));
+
                                         },
                                         child: Stack(
                                             fit: StackFit.passthrough,
@@ -444,6 +447,7 @@ class HomePage extends StatelessWidget {
                                               // Handle default case
                                               break;
                                           }
+                                          //Get.to(DetailPage(index: index));
                                         },
                                         child: Container(
                                           height: 77,
