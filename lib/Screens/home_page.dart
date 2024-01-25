@@ -6,8 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shoshin_tech_assignment/Screens/Kotak_page.dart';
 import 'package:shoshin_tech_assignment/Screens/RageCoffe_page.dart';
-import 'package:shoshin_tech_assignment/Screens/detail_page.dart';
 import 'package:shoshin_tech_assignment/Screens/kukufm_detail_age.dart';
+import 'package:shoshin_tech_assignment/controller/app_controller.dart';
+import 'package:shoshin_tech_assignment/models/detail_model.dart';
 import 'package:shoshin_tech_assignment/models/tasks_model.dart';
 import 'package:flutter/services.dart' as rootBundle;
 
@@ -16,6 +17,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AppController appController = Get.put(AppController());
     return Scaffold(
         appBar: AppBar(
           leading: IconButton(
@@ -56,12 +58,18 @@ class HomePage extends StatelessWidget {
           backgroundColor: Colors.blue,
         ),
         body: FutureBuilder(
-            future: ReadJsonData(),
+            future: appController.loadJsonData(),
             builder: (context, data) {
-              if (data.hasError) {
-                return Center(child: Text("${data.error}"));
-              } else if (data.hasData) {
-                var items = data.data as List<TaskModel>;
+              return Obx(() {
+                if (appController.taskModels.isEmpty ||
+                    appController.detailModels.isEmpty) {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+
+                var items = appController.taskModels;
+                var detail = appController.detailModels; //
                 return Column(
                   children: [
                     ClipRRect(
@@ -212,7 +220,10 @@ class HomePage extends StatelessWidget {
                                             Duration(milliseconds: 800),
                                         autoPlayCurve: Curves.fastOutSlowIn,
                                         viewportFraction: 0.68),
-                                    items: items.map((task) {
+                                    items: items.asMap().entries.map((entry) {
+                                      int index = entry.key;
+                                      TaskModel task = items[index];
+                                      DetailModel detailInfo = detail[index]; // Assuming detail has the same length as tasks
                                       return Builder(
                                         builder: (BuildContext context) {
                                           return Container(
@@ -227,7 +238,12 @@ class HomePage extends StatelessWidget {
                                                 children: [
                                                   Icon(Icons.circle,
                                                       size: 12,
-                                                      color: Colors.black54),
+                                                      color: Color(int.parse(
+                                                              task.customdata!
+                                                                  .dominantcolor!
+                                                                  .substring(1),
+                                                              radix: 16) +
+                                                          0xFF000000)),
                                                   Text(
                                                     task.title ??
                                                         "", // Add this line to display shortDesc
@@ -292,7 +308,6 @@ class HomePage extends StatelessWidget {
                                               break;
 
                                             default:
-
                                               break;
                                           }
                                         },
@@ -323,17 +338,15 @@ class HomePage extends StatelessWidget {
                                                     color: Colors.black38,
                                                     borderRadius:
                                                         BorderRadius.only(
-                                                            bottomRight:
-                                                                Radius.circular(
-                                                                    20),
+                                                            bottomRight: Radius
+                                                                .circular(20),
                                                             bottomLeft:
                                                                 Radius.circular(
                                                                     20))),
                                                 child: Column(
                                                   children: [
                                                     Text(
-                                                      task.title ??
-                                                          "",
+                                                      task.title ?? "",
                                                       style: TextStyle(
                                                           color: Colors.white,
                                                           fontWeight:
@@ -341,8 +354,7 @@ class HomePage extends StatelessWidget {
                                                           fontSize: 10),
                                                     ),
                                                     Text(
-                                                      task.ctaLong ??
-                                                          "",
+                                                      task.ctaLong ?? "",
                                                       style: TextStyle(
                                                         color: Colors.white,
                                                         fontWeight:
@@ -350,8 +362,7 @@ class HomePage extends StatelessWidget {
                                                       ),
                                                     ),
                                                     Text(
-                                                      task.payout ??
-                                                          "",
+                                                      task.payout ?? "",
                                                       style: TextStyle(
                                                         color: Colors.white,
                                                         fontWeight:
@@ -403,14 +414,19 @@ class HomePage extends StatelessWidget {
                                     itemCount: 3,
                                     itemBuilder:
                                         (BuildContext context, int index) {
-                                      List<Color> borderColors = [
-                                        Colors.pink,
-                                        Colors.indigo,
-                                        Colors.black,
-                                        // Add more colors as needed
-                                      ];
-                                      Color borderColor = borderColors[
-                                          index % borderColors.length];
+                                      // List<Color> borderColors = [
+                                      //   Colors.pink,
+                                      //   Colors.indigo,
+                                      //   Colors.black,
+                                      //   // Add more colors as needed
+                                      // ];
+                                      Color borderColor = Color(int.parse(
+                                              items[index]
+                                                  .customdata!
+                                                  .dominantcolor!
+                                                  .substring(1),
+                                              radix: 16) +
+                                          0xFF000000);
                                       return GestureDetector(
                                         onTap: () {
                                           switch (index) {
@@ -548,7 +564,6 @@ class HomePage extends StatelessWidget {
                                               )
                                             ],
                                           ),
-
                                         ),
                                       );
                                     },
@@ -562,19 +577,8 @@ class HomePage extends StatelessWidget {
                     ))
                   ],
                 );
-              } else {
-                return Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
+              });
             }));
   }
-
-  Future<List<TaskModel>> ReadJsonData() async {
-    final jsondata =
-        await rootBundle.rootBundle.loadString("assets/data/dummy_tasks.json");
-    final list = json.decode(jsondata) as List<dynamic>;
-
-    return list.map((e) => TaskModel.fromJson(e)).toList();
-  }
 }
+//Color(int.parse(task.customdata!.dominantcolor!.substring(1), radix: 16) + 0xFF000000)

@@ -3,17 +3,18 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' as rootBundle;
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:shoshin_tech_assignment/Screens/home_page.dart';
-import 'package:shoshin_tech_assignment/models/detail_model.dart';
-import 'package:shoshin_tech_assignment/models/tasks_model.dart';
+import 'package:shoshin_tech_assignment/controller/app_controller.dart';
 
 class KukufmPage extends StatelessWidget {
   const KukufmPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    AppController appController = Get.put(AppController());
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -29,14 +30,18 @@ class KukufmPage extends StatelessWidget {
         backgroundColor: Colors.blue,
       ),
       body: FutureBuilder(
-          future: readJsonData(),
-          builder: (context, data) {
-            if (data.hasError) {
-              return Center(child: Text("${data.error}"));
-            } else if (data.hasData) {
-              var items = data.data![0] as List<TaskModel>;
-              var detail = data.data![1] as List<DetailModel>;
-              return Column(
+          future: appController.loadJsonData(),
+          builder: (context, data) {return Obx(() {
+            if (appController.taskModels.isEmpty ||
+                appController.detailModels.isEmpty) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+
+            var items = appController.taskModels;
+            var detail = appController.detailModels; //
+            return Column(
                 children: [
                   Expanded(
                     child: ClipRRect(
@@ -592,30 +597,8 @@ class KukufmPage extends StatelessWidget {
                   ),
                 ],
               );
-            } else {
-              return Center(
-                child: CircularProgressIndicator(),
-              );
             }
-          }),
+          );}),
     );
-  }
-
-  Future<List<List<dynamic>>> readJsonData() async {
-    final tasksJsonData =
-        await rootBundle.rootBundle.loadString("assets/data/dummy_tasks.json");
-    final detailsJsonData = await rootBundle.rootBundle
-        .loadString("assets/data/dummy_details.json");
-
-    final tasksList = json.decode(tasksJsonData) as List<dynamic>;
-    final detailsList = json.decode(detailsJsonData) as List<dynamic>;
-
-    List<TaskModel> taskModels =
-        tasksList.map((e) => TaskModel.fromJson(e)).toList();
-
-    List<DetailModel> detailModels =
-        detailsList.map((e) => DetailModel.fromJson(e)).toList();
-
-    return [taskModels, detailModels];
   }
 }

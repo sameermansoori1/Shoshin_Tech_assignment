@@ -1,24 +1,26 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:flutter/services.dart' as rootBundle;
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:shoshin_tech_assignment/Screens/home_page.dart';
-import 'package:shoshin_tech_assignment/models/detail_model.dart';
-import 'package:shoshin_tech_assignment/models/tasks_model.dart';
-
+import 'package:shoshin_tech_assignment/controller/app_controller.dart';
 
 class Kotak extends StatelessWidget {
   const Kotak({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final AppController appController = Get.put(AppController());
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () {Get.to(HomePage());},
+          onPressed: () {
+            Get.to(HomePage());
+          },
           icon: Icon(Icons.arrow_back, color: Colors.white),
         ),
         title: Text(
@@ -28,13 +30,18 @@ class Kotak extends StatelessWidget {
         backgroundColor: Colors.blue,
       ),
       body: FutureBuilder(
-          future: readJsonData(),
+          future: appController.loadJsonData(),
           builder: (context, data) {
-            if (data.hasError) {
-              return Center(child: Text("${data.error}"));
-            } else if (data.hasData) {
-              var items = data.data![0] as List<TaskModel>;
-              var detail = data.data![1] as List<DetailModel>;
+            return Obx(() {
+              if (appController.taskModels.isEmpty ||
+                  appController.detailModels.isEmpty) {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+
+              var items = appController.taskModels;
+              var detail = appController.detailModels; //
               return Column(
                 children: [
                   Expanded(
@@ -74,10 +81,7 @@ class Kotak extends StatelessWidget {
                                             padding: const EdgeInsets.only(
                                                 right: 20.0),
                                             child: Image.network(
-                                              items[1]
-                                                  .brand!
-                                                  .logo
-                                                  .toString(),
+                                              items[1].brand!.logo.toString(),
                                               fit: BoxFit.fitHeight,
                                             ),
                                           ),
@@ -91,14 +95,12 @@ class Kotak extends StatelessWidget {
                                                 height: 20,
                                                 width: 200,
                                                 child: Text(
-                                                  items[1]
-                                                      .title
-                                                      .toString(),
+                                                  items[1].title.toString(),
                                                   style: TextStyle(
                                                       color: Colors.black
                                                           .withOpacity(0.73),
                                                       fontWeight:
-                                                      FontWeight.bold,
+                                                          FontWeight.bold,
                                                       fontSize: 12),
                                                 ),
                                               ),
@@ -111,13 +113,11 @@ class Kotak extends StatelessWidget {
                                                   height: 30,
                                                   width: 100,
                                                   child: Text(
-                                                    items[0]
-                                                        .ctaLong
-                                                        .toString(),
+                                                    items[0].ctaLong.toString(),
                                                     style: TextStyle(
                                                         color: Colors.black54,
                                                         fontWeight:
-                                                        FontWeight.bold,
+                                                            FontWeight.bold,
                                                         fontSize: 10),
                                                   ),
                                                 ),
@@ -130,8 +130,8 @@ class Kotak extends StatelessWidget {
                                                     width: 40,
                                                     child: RatingBar.builder(
                                                       initialRating: items[1]
-                                                          .customdata!
-                                                          .apprating ??
+                                                              .customdata!
+                                                              .apprating ??
                                                           0.0,
                                                       minRating: 1,
                                                       direction: Axis.vertical,
@@ -139,7 +139,7 @@ class Kotak extends StatelessWidget {
                                                       itemCount: 5,
                                                       itemSize: 30.0,
                                                       itemPadding:
-                                                      EdgeInsets.symmetric(
+                                                          EdgeInsets.symmetric(
                                                         horizontal: 0.0,
                                                       ),
                                                       itemBuilder:
@@ -167,7 +167,7 @@ class Kotak extends StatelessWidget {
                                   SizedBox(width: 10, height: 15),
                                   Column(
                                     crossAxisAlignment:
-                                    CrossAxisAlignment.start,
+                                        CrossAxisAlignment.start,
                                     children: [
                                       SizedBox(
                                         width: 10,
@@ -195,10 +195,9 @@ class Kotak extends StatelessWidget {
                                       decoration: BoxDecoration(
                                         color: Colors.white,
                                         borderRadius:
-                                        BorderRadius.circular(20.0),
+                                            BorderRadius.circular(20.0),
                                         border: Border.all(
                                           color: Colors.green,
-
                                           width: 2.0,
                                         ),
                                       ),
@@ -208,20 +207,17 @@ class Kotak extends StatelessWidget {
                                               bottom: 0.0),
                                           child: Container(
                                               child: Icon(
-                                                Icons.check_circle_outline,
-                                                color: Colors.green,
-                                              )),
+                                            Icons.check_circle_outline,
+                                            color: Colors.green,
+                                          )),
                                         ),
-
                                         Padding(
                                           padding: const EdgeInsets.all(3.0),
                                           child: Container(
                                             height: 30,
                                             width: 260,
                                             child: Text(
-                                              detail[0]
-                                                  .description
-                                                  .toString(),
+                                              detail[0].description.toString(),
                                               style: TextStyle(
                                                   color: Colors.black
                                                       .withOpacity(0.73),
@@ -238,20 +234,18 @@ class Kotak extends StatelessWidget {
                                               width: 24,
                                               decoration: BoxDecoration(
                                                 color: Colors.green,
-                                                borderRadius: BorderRadius.circular(
-                                                    11),
+                                                borderRadius:
+                                                    BorderRadius.circular(11),
                                               ),
                                               child: Center(
                                                   child: Text(
-                                                    detail[1]
-                                                        .payout
-                                                        .toString(),
-                                                    style: TextStyle(
-                                                        color: Colors.black
-                                                            .withOpacity(0.73),
-                                                        fontWeight: FontWeight.bold,
-                                                        fontSize: 8),
-                                                  )),
+                                                detail[1].payout.toString(),
+                                                style: TextStyle(
+                                                    color: Colors.black
+                                                        .withOpacity(0.73),
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 8),
+                                              )),
                                             )),
                                       ]),
                                     ),
@@ -265,7 +259,7 @@ class Kotak extends StatelessWidget {
                                       decoration: BoxDecoration(
                                         color: Colors.white,
                                         borderRadius:
-                                        BorderRadius.circular(20.0),
+                                            BorderRadius.circular(20.0),
                                         border: Border.all(
                                           color: Colors.orange,
                                           width: 2.0,
@@ -279,17 +273,16 @@ class Kotak extends StatelessWidget {
                                                   bottom: 2.0),
                                               child: Container(
                                                   child: Icon(
-                                                    Icons.timer,
-                                                    color: Colors.orange,
-
-                                                  )),
+                                                Icons.timer,
+                                                color: Colors.orange,
+                                              )),
                                             ),
                                             SizedBox(
                                               width: 5,
                                             ),
                                             Padding(
                                               padding:
-                                              const EdgeInsets.all(3.0),
+                                                  const EdgeInsets.all(3.0),
                                               child: Container(
                                                 height: 30,
                                                 width: 260,
@@ -301,7 +294,7 @@ class Kotak extends StatelessWidget {
                                                       color: Colors.black
                                                           .withOpacity(0.73),
                                                       fontWeight:
-                                                      FontWeight.bold,
+                                                          FontWeight.bold,
                                                       fontSize: 15),
                                                 ),
                                               ),
@@ -315,21 +308,19 @@ class Kotak extends StatelessWidget {
                                                   decoration: BoxDecoration(
                                                     color: Colors.orange,
                                                     borderRadius:
-                                                    BorderRadius.circular(
-                                                        11),
+                                                        BorderRadius.circular(
+                                                            11),
                                                   ),
                                                   child: Center(
                                                       child: Text(
-                                                        detail[1]
-                                                            .payout
-                                                            .toString(),
-                                                        style: TextStyle(
-                                                            color: Colors.black
-                                                                .withOpacity(0.73),
-                                                            fontWeight:
+                                                    detail[1].payout.toString(),
+                                                    style: TextStyle(
+                                                        color: Colors.black
+                                                            .withOpacity(0.73),
+                                                        fontWeight:
                                                             FontWeight.bold,
-                                                            fontSize: 8),
-                                                      )),
+                                                        fontSize: 8),
+                                                  )),
                                                 )),
                                           ]),
                                           Padding(
@@ -338,9 +329,7 @@ class Kotak extends StatelessWidget {
                                               height: 70,
                                               width: 300,
                                               child: Text(
-                                                items[1]
-                                                    .shortDesc
-                                                    .toString(),
+                                                items[1].shortDesc.toString(),
                                                 style: TextStyle(
                                                     color: Colors.black
                                                         .withOpacity(0.5),
@@ -362,7 +351,7 @@ class Kotak extends StatelessWidget {
                                       decoration: BoxDecoration(
                                         color: Colors.grey.shade200,
                                         borderRadius:
-                                        BorderRadius.circular(20.0),
+                                            BorderRadius.circular(20.0),
                                         border: Border.all(
                                           color: Colors.white,
                                           // Set the border color to pink
@@ -375,10 +364,10 @@ class Kotak extends StatelessWidget {
                                               bottom: 2.0),
                                           child: Container(
                                               child: Icon(
-                                                Icons.circle,
-                                                color: Colors.grey,
-                                                size: 33,
-                                              )),
+                                            Icons.circle,
+                                            color: Colors.grey,
+                                            size: 33,
+                                          )),
                                         ),
                                         SizedBox(
                                           width: 5,
@@ -406,19 +395,17 @@ class Kotak extends StatelessWidget {
                                               width: 24,
                                               decoration: BoxDecoration(
                                                 color: Colors.white,
-                                                borderRadius: BorderRadius.circular(
-                                                    11),
+                                                borderRadius:
+                                                    BorderRadius.circular(11),
                                               ),
                                               child: Center(
                                                   child: Text(
-                                                    detail[1]
-                                                        .payout
-                                                        .toString(),
-                                                    style: TextStyle(
-                                                        color: Colors.blue,
-                                                        fontWeight: FontWeight.bold,
-                                                        fontSize: 8),
-                                                  )),
+                                                detail[1].payout.toString(),
+                                                style: TextStyle(
+                                                    color: Colors.blue,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 8),
+                                              )),
                                             )),
                                       ]),
                                     ),
@@ -433,7 +420,7 @@ class Kotak extends StatelessWidget {
                                       decoration: BoxDecoration(
                                         color: Colors.grey.shade200,
                                         borderRadius:
-                                        BorderRadius.circular(20.0),
+                                            BorderRadius.circular(20.0),
                                         border: Border.all(
                                           color: Colors.white,
                                           width: 2.0,
@@ -445,10 +432,10 @@ class Kotak extends StatelessWidget {
                                               bottom: 2.0),
                                           child: Container(
                                               child: Icon(
-                                                Icons.circle,
-                                                color: Colors.grey,
-                                                size: 33,
-                                              )),
+                                            Icons.circle,
+                                            color: Colors.grey,
+                                            size: 33,
+                                          )),
                                         ),
                                         SizedBox(
                                           width: 5,
@@ -476,61 +463,65 @@ class Kotak extends StatelessWidget {
                                               width: 24,
                                               decoration: BoxDecoration(
                                                 color: Colors.white,
-                                                borderRadius: BorderRadius.circular(
-                                                    11),
+                                                borderRadius:
+                                                    BorderRadius.circular(11),
                                               ),
                                               child: Center(
                                                   child: Text(
-                                                    detail[1]
-                                                        .payout
-                                                        .toString(),
-                                                    style: TextStyle(
-                                                        color: Colors.blue,
-                                                        fontWeight: FontWeight.bold,
-                                                        fontSize: 8),
-                                                  )),
+                                                detail[1].payout.toString(),
+                                                style: TextStyle(
+                                                    color: Colors.blue,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 8),
+                                              )),
                                             )),
                                       ]),
                                     ),
                                   ),
-                                  Container(alignment: Alignment.center,
-                                    child: Stack(alignment: Alignment.center,
+                                  Container(
+                                    alignment: Alignment.center,
+                                    child: Stack(
+                                      alignment: Alignment.center,
                                       children: [
-                                           Padding(
-                                             padding: const EdgeInsets.only(bottom: 20.0),
-                                             child: Row(mainAxisAlignment: MainAxisAlignment.center,
-                                              children: [
-                                                Icon(Icons.trending_up_outlined,
-                                                    color: Colors.deepOrange),
-                                                Row(
-                                                  children: [
-                                                    Container(
-                                                      child: Text(
-                                                        items[1]
-                                                            .totallead
-                                                            .toString(),
-                                                        style: TextStyle(
-                                                            color:
-                                                            Colors.deepOrange,
-                                                            fontWeight:
-                                                            FontWeight.bold,
-                                                            fontSize: 12),
-                                                      ),
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                              bottom: 20.0),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Icon(Icons.trending_up_outlined,
+                                                  color: Colors.deepOrange),
+                                              Row(
+                                                children: [
+                                                  Container(
+                                                    child: Text(
+                                                      items[1]
+                                                          .totallead
+                                                          .toString(),
+                                                      style: TextStyle(
+                                                          color:
+                                                              Colors.deepOrange,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize: 12),
                                                     ),
-                                                  ],
-                                                ),
-                                                Container(
-                                                  child: Text(
-                                                    " users has already participated",
-                                                    style: TextStyle(
-                                                        color: Colors.deepOrange,
-                                                        fontWeight: FontWeight.bold,
-                                                        fontSize: 12),
                                                   ),
+                                                ],
+                                              ),
+                                              Container(
+                                                child: Text(
+                                                  " users has already participated",
+                                                  style: TextStyle(
+                                                      color: Colors.deepOrange,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 12),
                                                 ),
-                                             ],
-                                             ),
-                                           ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
                                         Padding(
                                           padding: const EdgeInsets.only(
                                               top: 40.0, left: 0.0),
@@ -545,13 +536,15 @@ class Kotak extends StatelessWidget {
                                               decoration: BoxDecoration(
                                                   color: Colors.blue,
                                                   borderRadius:
-                                                  BorderRadius.circular(20)),
+                                                      BorderRadius.circular(
+                                                          20)),
                                               height: 40,
                                               width: 270,
                                               child: Center(
                                                 child: Padding(
-                                                  padding: const EdgeInsets.only(
-                                                      left: 110.0),
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 110.0),
                                                   child: Row(
                                                     children: [
                                                       Text(
@@ -559,7 +552,7 @@ class Kotak extends StatelessWidget {
                                                         style: TextStyle(
                                                             color: Colors.white,
                                                             fontWeight:
-                                                            FontWeight.bold,
+                                                                FontWeight.bold,
                                                             fontSize: 12),
                                                       ),
                                                       Text(
@@ -569,7 +562,7 @@ class Kotak extends StatelessWidget {
                                                         style: TextStyle(
                                                             color: Colors.white,
                                                             fontWeight:
-                                                            FontWeight.bold,
+                                                                FontWeight.bold,
                                                             fontSize: 12),
                                                       ),
                                                     ],
@@ -592,30 +585,8 @@ class Kotak extends StatelessWidget {
                   ),
                 ],
               );
-            } else {
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            }
+            });
           }),
-
     );
-  }
-  Future<List<List<dynamic>>> readJsonData() async {
-    final tasksJsonData =
-    await rootBundle.rootBundle.loadString("assets/data/dummy_tasks.json");
-    final detailsJsonData = await rootBundle.rootBundle
-        .loadString("assets/data/dummy_details.json");
-
-    final tasksList = json.decode(tasksJsonData) as List<dynamic>;
-    final detailsList = json.decode(detailsJsonData) as List<dynamic>;
-
-    List<TaskModel> taskModels =
-    tasksList.map((e) => TaskModel.fromJson(e)).toList();
-
-    List<DetailModel> detailModels =
-    detailsList.map((e) => DetailModel.fromJson(e)).toList();
-
-    return [taskModels, detailModels];
   }
 }

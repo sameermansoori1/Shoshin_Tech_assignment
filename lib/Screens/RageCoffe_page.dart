@@ -1,19 +1,20 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:shoshin_tech_assignment/Screens/home_page.dart';
 import 'package:flutter/services.dart' as rootBundle;
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:shoshin_tech_assignment/models/detail_model.dart';
-import 'package:shoshin_tech_assignment/models/tasks_model.dart';
+import 'package:shoshin_tech_assignment/controller/app_controller.dart';
 
 class RageCoffe extends StatelessWidget {
   const RageCoffe({super.key});
 
   @override
   Widget build(BuildContext context) {
+    AppController appController = Get.put(AppController());
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -29,13 +30,18 @@ class RageCoffe extends StatelessWidget {
         backgroundColor: Colors.blue,
       ),
       body: FutureBuilder(
-          future: readJsonData(),
+          future: appController.loadJsonData(),
           builder: (context, data) {
-            if (data.hasError) {
-              return Center(child: Text("${data.error}"));
-            } else if (data.hasData) {
-              var items = data.data![0] as List<TaskModel>;
-              var detail = data.data![1] as List<DetailModel>;
+            return Obx(() {
+              if (appController.taskModels.isEmpty ||
+                  appController.detailModels.isEmpty) {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+
+              var items = appController.taskModels;
+              var detail = appController.detailModels; //
               return Column(
                 children: [
                   Expanded(
@@ -76,10 +82,7 @@ class RageCoffe extends StatelessWidget {
                                             padding: const EdgeInsets.only(
                                                 right: 20.0),
                                             child: Image.network(
-                                              items[2]
-                                                  .brand!
-                                                  .logo
-                                                  .toString(),
+                                              items[2].brand!.logo.toString(),
                                               fit: BoxFit.contain,
                                             ),
                                           ),
@@ -93,9 +96,7 @@ class RageCoffe extends StatelessWidget {
                                                 height: 20,
                                                 width: 200,
                                                 child: Text(
-                                                  items[2]
-                                                      .title
-                                                      .toString(),
+                                                  items[2].title.toString(),
                                                   style: TextStyle(
                                                       color: Colors.black
                                                           .withOpacity(0.73),
@@ -113,9 +114,7 @@ class RageCoffe extends StatelessWidget {
                                                   height: 30,
                                                   width: 100,
                                                   child: Text(
-                                                    items[2]
-                                                        .ctaLong
-                                                        .toString(),
+                                                    items[2].ctaLong.toString(),
                                                     style: TextStyle(
                                                         color: Colors.black54,
                                                         fontWeight:
@@ -220,9 +219,7 @@ class RageCoffe extends StatelessWidget {
                                             height: 30,
                                             width: 260,
                                             child: Text(
-                                              detail[2]
-                                                  .title
-                                                  .toString(),
+                                              detail[2].title.toString(),
                                               style: TextStyle(
                                                   color: Colors.black
                                                       .withOpacity(0.73),
@@ -239,14 +236,12 @@ class RageCoffe extends StatelessWidget {
                                               width: 24,
                                               decoration: BoxDecoration(
                                                 color: Colors.green,
-                                                borderRadius: BorderRadius.circular(
-                                                    11),
+                                                borderRadius:
+                                                    BorderRadius.circular(11),
                                               ),
                                               child: Center(
                                                   child: Text(
-                                                detail[2]
-                                                    .payout
-                                                    .toString(),
+                                                detail[2].payout.toString(),
                                                 style: TextStyle(
                                                     color: Colors.black
                                                         .withOpacity(0.73),
@@ -320,9 +315,7 @@ class RageCoffe extends StatelessWidget {
                                                   ),
                                                   child: Center(
                                                       child: Text(
-                                                    detail[2]
-                                                        .payout
-                                                        .toString(),
+                                                    detail[2].payout.toString(),
                                                     style: TextStyle(
                                                         color: Colors.black
                                                             .withOpacity(0.73),
@@ -338,9 +331,7 @@ class RageCoffe extends StatelessWidget {
                                               height: 70,
                                               width: 300,
                                               child: Text(
-                                                items[2]
-                                                    .shortDesc
-                                                    .toString(),
+                                                items[2].shortDesc.toString(),
                                                 style: TextStyle(
                                                     color: Colors.black
                                                         .withOpacity(0.5),
@@ -405,14 +396,12 @@ class RageCoffe extends StatelessWidget {
                                               width: 24,
                                               decoration: BoxDecoration(
                                                 color: Colors.white,
-                                                borderRadius: BorderRadius.circular(
-                                                    11),
+                                                borderRadius:
+                                                    BorderRadius.circular(11),
                                               ),
                                               child: Center(
                                                   child: Text(
-                                                detail[2]
-                                                    .payout
-                                                    .toString(),
+                                                detail[2].payout.toString(),
                                                 style: TextStyle(
                                                     color: Colors.blue,
                                                     fontWeight: FontWeight.bold,
@@ -475,14 +464,12 @@ class RageCoffe extends StatelessWidget {
                                               width: 24,
                                               decoration: BoxDecoration(
                                                 color: Colors.white,
-                                                borderRadius: BorderRadius.circular(
-                                                    11),
+                                                borderRadius:
+                                                    BorderRadius.circular(11),
                                               ),
                                               child: Center(
                                                   child: Text(
-                                                detail[2]
-                                                    .payout
-                                                    .toString(),
+                                                detail[2].payout.toString(),
                                                 style: TextStyle(
                                                     color: Colors.blue,
                                                     fontWeight: FontWeight.bold,
@@ -492,12 +479,17 @@ class RageCoffe extends StatelessWidget {
                                       ]),
                                     ),
                                   ),
-                                  Container(alignment: Alignment.center,
-                                    child: Stack(alignment: Alignment.center,
+                                  Container(
+                                    alignment: Alignment.center,
+                                    child: Stack(
+                                      alignment: Alignment.center,
                                       children: [
                                         Padding(
-                                          padding: const EdgeInsets.only(bottom: 20.0),
-                                          child: Row(mainAxisAlignment: MainAxisAlignment.center,
+                                          padding: const EdgeInsets.only(
+                                              bottom: 20.0),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
                                             children: [
                                               Icon(Icons.trending_up_outlined,
                                                   color: Colors.deepOrange),
@@ -523,7 +515,8 @@ class RageCoffe extends StatelessWidget {
                                                   " users has already participated",
                                                   style: TextStyle(
                                                       color: Colors.deepOrange,
-                                                      fontWeight: FontWeight.bold,
+                                                      fontWeight:
+                                                          FontWeight.bold,
                                                       fontSize: 12),
                                                 ),
                                               )
@@ -544,13 +537,15 @@ class RageCoffe extends StatelessWidget {
                                               decoration: BoxDecoration(
                                                   color: Colors.blue,
                                                   borderRadius:
-                                                      BorderRadius.circular(20)),
+                                                      BorderRadius.circular(
+                                                          20)),
                                               height: 40,
                                               width: 270,
                                               child: Center(
                                                 child: Padding(
-                                                  padding: const EdgeInsets.only(
-                                                      left: 110.0),
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 110.0),
                                                   child: Row(
                                                     children: [
                                                       Text(
@@ -591,30 +586,25 @@ class RageCoffe extends StatelessWidget {
                   ),
                 ],
               );
-            } else {
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            }
+            });
           }),
     );
   }
-
-  Future<List<List<dynamic>>> readJsonData() async {
-    final tasksJsonData =
-        await rootBundle.rootBundle.loadString("assets/data/dummy_tasks.json");
-    final detailsJsonData = await rootBundle.rootBundle
-        .loadString("assets/data/dummy_details.json");
-
-    final tasksList = json.decode(tasksJsonData) as List<dynamic>;
-    final detailsList = json.decode(detailsJsonData) as List<dynamic>;
-
-    List<TaskModel> taskModels =
-        tasksList.map((e) => TaskModel.fromJson(e)).toList();
-
-    List<DetailModel> detailModels =
-        detailsList.map((e) => DetailModel.fromJson(e)).toList();
-
-    return [taskModels, detailModels];
-  }
 }
+// Future<List<List<dynamic>>> readJsonData() async {
+//   final tasksJsonData =
+//   await rootBundle.rootBundle.loadString("assets/data/dummy_tasks.json");
+//   final detailsJsonData = await rootBundle.rootBundle
+//       .loadString("assets/data/dummy_details.json");
+//
+//   final tasksList = json.decode(tasksJsonData) as List<dynamic>;
+//   final detailsList = json.decode(detailsJsonData) as List<dynamic>;
+//
+//   List<TaskModel> taskModels =
+//   tasksList.map((e) => TaskModel.fromJson(e)).toList();
+//
+//   List<DetailModel> detailModels =
+//   detailsList.map((e) => DetailModel.fromJson(e)).toList();
+//
+//   return [taskModels, detailModels];
+// }
